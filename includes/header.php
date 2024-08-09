@@ -5,13 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Keeper de Notas</title>
     <link rel="stylesheet" href="includes/css/styles.css">
-    <script>
-        function handleFocus(event) {
-            const note = event.target;
-            if (note.innerHTML.trim() === '<p>Armazene seu passado...</p>') {
-                note.innerHTML = '<h3>Título da Nota</h3><p></p>';
-                note.querySelector('p').focus();
-            }
-        }
-    </script>
 </head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1><a href="index.php">Brain Keeper</a></h1>
+            <!-- <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">Sobre</a></li>
+                    <li><a href="features.html">Funcionalidades</a></li>
+                    <li><a href="contact.html">Contato</a></li>
+                </ul>
+            </nav> -->
+        </div>
+    </header>
+</body>
+</html>

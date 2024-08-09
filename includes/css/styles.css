@@ -1,34 +1,172 @@
-/* Main Content */
-main {
-    padding: 20px;
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos Gerais */
+body {
+    font-family: Arial, sans-serif;
+    padding-top: 60px; /* Espaço para o header fixo */
+}
+
+/* Header */
+header {
+    background-color: #FEEFC3; /* Cor do cabeçalho */
+    color: #333;
+    padding: 12px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     max-width: 1200px;
     margin: 0 auto;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 0 20px;
 }
 
-/* Seção de notas */
-.note-editor {
-    margin-top: 20px;
+header h1 {
+    margin: 0;
+    font-size: 30px;
 }
 
-.note {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+/* Estilos para o link dentro do h1 */
+header h1 a {
+    color: #333; /* Cor do texto do link */
+    text-decoration: none; /* Remove o sublinhado */
+    transition: color 0.3s, text-decoration 0.3s; /* Transição suave para cor e sublinhado */
+}
+
+header h1 a:active {
+    text-decoration: underline; /* Adiciona o sublinhado somente quando o link está ativo (clicado) */
+}
+
+header h1 a:hover {
+    color: #333; /* Mantém a cor do texto igual ao passar o mouse */
+    text-decoration: none; /* Remove o sublinhado ao passar o mouse */
+}
+
+/* Navegação */
+header nav ul {
+    list-style: none;
+    display: flex;
+}
+
+header nav ul li {
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    color: #333;
+    text-decoration: none; /* Remove o sublinhado */
+    font-size: 18px;
+    transition: color 0.3s, text-decoration 0.3s; /* Transição suave para cor e sublinhado */
+}
+
+header nav ul li a:active {
+    text-decoration: underline; /* Adiciona o sublinhado somente quando o link está ativo (clicado) */
+}
+
+header nav ul li a:hover {
+    color: #333; /* Mantém a cor do texto igual ao passar o mouse */
+    text-decoration: none; /* Remove o sublinhado ao passar o mouse */
+}
+
+/* Main Content */
+main {
+    min-height: 100vh; /* Preencher a altura da tela inteira */
     padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    min-height: 200px;
+    background-color: #202124;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center; /* Centralizar o conteúdo horizontalmente */
+    align-items: center; /* Centralizar o conteúdo verticalmente */
 }
 
-.note h3 {
-    font-size: 20px;
+main section {
+    margin-bottom: 20px;
+}
+
+main section h2 {
+    font-size: 22px;
     margin-bottom: 10px;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 5px;
+}
+
+main section p {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+/* Botão note do modal do bootstrap */
+.note {
+    cursor: text;
+    background-color: #525355;
+    border: 1px solid #ccc; /* Borda fina */
+    padding: 5px 15px;
+    border-radius: 8px; /* Bordas arredondadas */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 500px; /* Largura reduzida */
+    text-align: left;
+    margin: 0 auto;
+    font-size: 18px;
+}
+
+.note:focus {
+    outline: none; /* Remover o contorno quando selecionado */
 }
 
 .note p {
+    margin: 0;
+    color: #ffffff;
+    cursor: text;
+}
+
+/* Footer */
+footer {
+    background-color: #FEEFC3; /* Cor do rodapé */
+    color: #333;
+    text-align: center;
+    padding: 20px 0;
+}
+
+footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+footer p {
+    margin: 0;
     font-size: 16px;
-    line-height: 1.5;
+}
+
+footer nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+footer nav ul li {
+    margin: 0 10px;
+}
+
+footer nav ul li a {
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+footer nav ul li a:hover {
+    color: #777;
 }
