@@ -9,9 +9,14 @@
 body {
     font-family: Arial, sans-serif;
     padding-top: 60px; /* Espaço para o header fixo */
+    margin: 0;
+    height: 100vh; /* Para garantir que o corpo ocupe toda a altura da tela */
+    overflow-y: scroll; /* Mantém o rolar disponível */
+    scrollbar-width: none; /* Oculta a barra de rolagem em navegadores modernos */
+    -ms-overflow-style: none; /* Oculta a barra de rolagem no Internet Explorer e Edge */
 }
 
-/* Header */
+/* Estilos para o header */
 header {
     background-color: #FEEFC3; /* Cor do cabeçalho */
     color: #333;
@@ -37,7 +42,6 @@ header h1 {
     font-size: 30px;
 }
 
-/* Estilos para o link dentro do h1 */
 header h1 a {
     color: #333; /* Cor do texto do link */
     text-decoration: none; /* Remove o sublinhado */
@@ -128,6 +132,29 @@ main section p {
     margin: 0;
     color: #ffffff;
     cursor: text;
+}
+
+/* Estilo da barra de rolagem */
+::-webkit-scrollbar {
+    width: 12px; /* Largura da barra de rolagem vertical */
+    height: 12px; /* Altura da barra de rolagem horizontal */
+}
+
+/* Estilo da parte de fundo da barra de rolagem */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Cor do fundo da barra de rolagem */
+    border-radius: 10px; /* Arredondamento dos cantos */
+}
+
+/* Estilo do "polegar" da barra de rolagem (a parte que se move) */
+::-webkit-scrollbar-thumb {
+    background: #888; /* Cor do polegar */
+    border-radius: 10px; /* Arredondamento dos cantos */
+}
+
+/* Estilo do "polegar" quando está em foco */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Cor do polegar quando o mouse está sobre ele */
 }
 
 /* Footer */
