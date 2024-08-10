@@ -1,5 +1,5 @@
 <?php
-require_once 'app/Db/Database.php';  // Inclua o caminho correto para a classe Database
+require_once 'app/Db/Database.php';
 
 // Inicialize a classe Database com a tabela 'notas'
 $db = new \App\Db\Database('notas');

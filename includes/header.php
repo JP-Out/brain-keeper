@@ -20,8 +20,6 @@
             </nav>
         </div>
     </header>
-
-    <script src="includes/js/scroll-control.js" defer></script>
 </body>
 
 </html>
