@@ -167,14 +167,13 @@ hr {
 /* Estilo para o botão de ordenação */
 .sort-button {
     background-color: transparent;
-    border: 1px solid #ccc; /* Borda fina */
+    border: 1px solid rgba(0,0,0,0.31); /* Borda fina */
     padding: 5px;
     border-radius: 100px; /* Bordas arredondadas */
     display: flex;
     justify-content: center;
     align-items: center;
     margin-left: 10px; /* Espaço entre os botões */
-    cursor: pointer;
     color: #ffffff;
 }
 
@@ -182,10 +181,19 @@ hr {
     -webkit-box-shadow: inset -1px 0px 132px -21px rgba(0,0,0,0.31);
     -moz-box-shadow: inset -1px 0px 132px -21px rgba(0,0,0,0.31);
     box-shadow: inset -1px 0px 132px -21px rgba(0,0,0,0.31);
+    cursor: pointer;
 }
 
 .sort-button:focus {
     outline: none; /* Remover o contorno quando selecionado */
+}
+
+#rotate-icon {
+    transition: transform 0.18s ease; /* Efeito de rotação */
+}
+
+.rotated {
+    transform: rotate(-180deg); /* Gira 180 graus */
 }
 
 /* Estilo da barra de rolagem */

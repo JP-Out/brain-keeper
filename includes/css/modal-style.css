@@ -33,10 +33,6 @@
     color: rgba(255, 255, 255, 0.644);
 }
 
-#noteDescription{
-    min-height: 200px;
-}
-
 /* Animação de zoom-in para o modal */
 .modal.fade .modal-dialog {
     transform: scale(1.4);
@@ -50,4 +46,13 @@
 
 .modal.fade.hide .modal-dialog {
     transform: scale(0.7);
+}
+
+/* Para as notas existentes */
+textarea {
+    min-height: 80px; /* Altura padrão para novas notas */
+    max-height: 600px; /* Altura máxima para notas grandes com rolagem */
+    overflow-y: auto; /* Permite rolagem vertical */
+    resize: none; /* Desabilita a opção de redimensionar o textarea */
+    width: 100%; /* Garante que o textarea use toda a largura disponível */
 }

@@ -18,7 +18,7 @@
 
         // Faz a requisição para o 'nota_modal.php'
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'nota_modal.php', true);
+        xhr.open('GET', 'includes/nota_modal.php', true);
         xhr.onload = function () {
             if (xhr.status === 200) {
                 modalBg.innerHTML = xhr.responseText;

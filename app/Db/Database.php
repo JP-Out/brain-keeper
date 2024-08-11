@@ -1,84 +1,119 @@
 <?php
-    namespace App\Db;
-    use PDO;
+namespace App\Db;
 
-    class Database{
-        const HOST = 'localhost';
-        const NAME = 'brain_keeper_crud';
-        const USER = 'root';
-        const PASS = '';
+use PDO;
+use PDOException;
 
-        private $table;
-        private $connection;
+class Database
+{
+    const HOST = 'localhost';
+    const NAME = 'brain_keeper_crud';
+    const USER = 'root';
+    const PASS = '';
 
-        public function __construct($table = null){
-            $this->table = $table;
-            $this->setConnection();
-        }
+    private $table;
+    private $connection;
 
-        private function setConnection(){
-            try {
-                $this->connection = new PDO('mysql:host='.self::HOST.';dbname='.self::NAME, self::USER, self::PASS); 
-                $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            } catch(PDOException $e) {
-                die("Erro: " . $e->getMessage());                                
-            }
-        }
-
-        public function execute($query, $params = []){
-           try {
-                $statement = $this->connection->prepare($query);
-                $statement->execute($params);
-                return $statement;
-           } catch(PDOException $e) {
-                die("Erro: " . $e->getMessage()); 
-           } 
-        }
-
-        public function insert($values){
-            $fields = array_keys($values);
-            $binds = array_pad([], count($values), '?');
-         
-            $query = 'INSERT INTO '.$this->table.' ('.implode(',', $fields).')
-             VALUES('.implode(',' , $binds).')';
-            
-            $this->execute($query, array_values($values));
-            
-            return $this->connection->lastInsertId();
-        }
-
-        public function select($where = null, $order = null, $limit = null, $fields = "*"){
-            //dados da query
-            $where = strlen($where) ? 'WHERE '.$where : '';
-            $order = strlen($order) ? 'ORDER BY '.$order : '';
-            $limit = strlen($limit) ? 'LIMIT '.$limit : ''; 
-
-            //monta a query
-            $query = 'SELECT '.$fields.' FROM '.$this->table.' '.$where.' '.$order.' '.$limit;
-
-            return $this->execute($query);
-        }
-
-        public function update($where, $values){
-            //dados da query
-            $fields = array_keys($values);
-
-            //monta a query
-            $query = 'UPDATE '.$this->table.' SET '.implode('=?,',$fields).'=? WHERE '.$where;
-
-            //executa a query
-            $this->execute($query, array_values($values));
-            return true;
-        }
-
-        public function delete($where){
-            //monta a query
-            $query = 'DELETE FROM '.$this->table.' WHERE '.$where;
-            //executa a query
-            $this->execute($query);
-
-            return true;
-        }
-
+    public function __construct($table = null)
+    {
+        $this->table = $table;
+        $this->setConnection();
     }
+
+    private function setConnection()
+    {
+        try {
+            $this->connection = new PDO('mysql:host=' . self::HOST . ';dbname=' . self::NAME, self::USER, self::PASS);
+            $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            die("Erro: " . $e->getMessage());
+        }
+    }
+
+    public function execute($query, $params = [])
+    {
+        try {
+            $statement = $this->connection->prepare($query);
+            $statement->execute($params);
+            return $statement;
+        } catch (PDOException $e) {
+            // Adiciona um log mais detalhado ou exibe a mensagem de erro
+            echo "Erro na consulta: " . $e->getMessage();
+            return false;
+        }
+    }
+    
+
+    public function insert($values)
+    {
+        $fields = array_keys($values);
+        $binds = array_pad([], count($values), '?');
+    
+        $query = 'INSERT INTO ' . $this->table . ' (' . implode(',', $fields) . ')
+                 VALUES(' . implode(',', $binds) . ')';
+    
+        $this->execute($query, array_values($values));
+    
+        return $this->connection->lastInsertId();
+    }
+    
+
+    public function select($where = null, $order = null, $limit = null, $fields = "*")
+    {
+        $where = strlen($where) ? 'WHERE ' . $where : '';
+        $order = strlen($order) ? 'ORDER BY ' . $order : '';
+        $limit = strlen($limit) ? 'LIMIT ' . $limit : '';
+
+        $query = 'SELECT ' . $fields . ' FROM ' . $this->table . ' ' . $where . ' ' . $order . ' ' . $limit;
+
+        return $this->execute($query);
+    }
+
+    public function update(array $values, array $conditions)
+    {
+        $setPart = [];
+        $wherePart = [];
+
+        // Prepara a parte SET da consulta
+        foreach ($values as $column => $value) {
+            $setPart[] = "$column = :$column";
+        }
+        $setClause = implode(', ', $setPart);
+
+        // Prepara a parte WHERE da consulta
+        foreach ($conditions as $column => $value) {
+            $wherePart[] = "$column = :where_$column";
+        }
+        $whereClause = implode(' AND ', $wherePart);
+
+        // Monta a consulta SQL
+        $sql = "UPDATE {$this->table} SET $setClause WHERE $whereClause";
+
+        try {
+            $stmt = $this->connection->prepare($sql);
+
+            // Vincula os valores para SET
+            foreach ($values as $column => $value) {
+                $stmt->bindValue(":$column", $value);
+            }
+
+            // Vincula os valores para WHERE
+            foreach ($conditions as $column => $value) {
+                $stmt->bindValue(":where_$column", $value);
+            }
+
+            // Executa a consulta
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            die("Erro: " . $e->getMessage());
+        }
+    }
+
+    public function delete($where)
+    {
+        $query = 'DELETE FROM ' . $this->table . ' WHERE ' . $where;
+
+        return $this->execute($query);
+    }
+}
 ?>

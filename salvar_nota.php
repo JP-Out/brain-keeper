@@ -5,23 +5,35 @@ require_once 'app/Db/Database.php';
 $db = new \App\Db\Database('notas');
 
 // Recebe os dados do formulário
+$id = $_POST['id'] ?? null;
 $titulo = $_POST['titulo'] ?? '';
 $conteudo = $_POST['conteudo'] ?? '';
 
-// Prepara os dados para inserção
-$values = [
-    'titulo' => $titulo,
-    'conteudo' => $conteudo
-];
+var_dump($_POST); // Depuração: Verifique os dados recebidos
 
-// Insere os dados na tabela usando o método insert
-$insertId = $db->insert($values);
+try {
+    if ($id && $id !== 'null') {
+        // Atualiza a nota existente
+        $updateValues = ['titulo' => $titulo, 'conteudo' => $conteudo];
+        $updated = $db->update($updateValues, ['id' => $id]);
 
-if ($insertId) {
-    echo "Nova nota criada com sucesso. ID: " . $insertId;
-} else {
-    echo "Erro ao criar a nota.";
+        if ($updated) {
+            echo "Nota atualizada com sucesso.";
+        } else {
+            echo "Erro ao atualizar a nota.";
+        }
+    } else {
+        // Insere uma nova nota
+        $insertValues = ['titulo' => $titulo, 'conteudo' => $conteudo];
+        $insertId = $db->insert($insertValues);
+
+        if ($insertId) {
+            echo "Nova nota criada com sucesso. ID: " . $insertId;
+        } else {
+            echo "Erro ao criar a nota.";
+        }
+    }
+} catch (Exception $e) {
+    echo "Erro: " . $e->getMessage();
 }
-
-// Não redirecionar após a inserção
 ?>
