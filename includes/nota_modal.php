@@ -38,6 +38,7 @@
 
     <!-- Inclundo o JS da pagina -->
     <script src="includes/js/nota_modal.js"></script>
+    <script src="includes/js/modal_adjust.js"></script>
 </body>
 
 </html>

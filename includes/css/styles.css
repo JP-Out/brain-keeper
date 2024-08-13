@@ -39,6 +39,7 @@ header .container {
 
 header h1 {
     margin: 0;
+    margin-left: -10%;
     font-size: 30px;
 }
 
@@ -59,8 +60,11 @@ header h1 a:hover {
 
 /* Navegação */
 header nav ul {
-    list-style: none;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
     display: flex;
+    align-items: center;
 }
 
 header nav ul li {
@@ -164,8 +168,8 @@ hr {
     cursor: text;
 }
 
-/* Estilo para o botão de ordenação */
-.sort-button {
+/* Estilo base para todos os botões */
+.base-button {
     background-color: transparent;
     border: 1px solid rgba(0,0,0,0.31); /* Borda fina */
     padding: 5px;
@@ -173,19 +177,33 @@ hr {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 10px; /* Espaço entre os botões */
     color: #ffffff;
+    transition: box-shadow 0.3s ease; /* Adiciona uma transição suave para o box-shadow */
 }
 
-.sort-button:hover {
+.base-button:hover {
     -webkit-box-shadow: inset -1px 0px 132px -21px rgba(0,0,0,0.31);
     -moz-box-shadow: inset -1px 0px 132px -21px rgba(0,0,0,0.31);
     box-shadow: inset -1px 0px 132px -21px rgba(0,0,0,0.31);
     cursor: pointer;
 }
 
-.sort-button:focus {
-    outline: none; /* Remover o contorno quando selecionado */
+.base-button:focus {
+    outline: none; /* Remove o contorno quando selecionado */
+}
+
+/* Estilo para .user-login */
+.user-login {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilo para .sort-button */
+.sort-button {
+    margin-left: 10px; /* Espaço entre os botões */
 }
 
 #rotate-icon {

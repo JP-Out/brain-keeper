@@ -42,21 +42,21 @@ class Database
             return false;
         }
     }
-    
+
 
     public function insert($values)
     {
         $fields = array_keys($values);
         $binds = array_pad([], count($values), '?');
-    
+
         $query = 'INSERT INTO ' . $this->table . ' (' . implode(',', $fields) . ')
                  VALUES(' . implode(',', $binds) . ')';
-    
+
         $this->execute($query, array_values($values));
-    
+
         return $this->connection->lastInsertId();
     }
-    
+
 
     public function select($where = null, $order = null, $limit = null, $fields = "*")
     {
@@ -114,6 +114,11 @@ class Database
         $query = 'DELETE FROM ' . $this->table . ' WHERE ' . $where;
 
         return $this->execute($query);
+    }
+
+    public function getTable()
+    {
+        return $this->table;
     }
 }
 ?>

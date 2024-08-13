@@ -23,6 +23,7 @@ if (!function_exists('truncarTexto')) {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
 <!-- Arquivo JS personalizado -->
 <script src="includes/js/masonry.js"></script>
+<script src="includes/js/drag_area.js"></script>
 
 <div class="notas-container">
     <link rel="stylesheet" href="includes/css/view-notes.css">

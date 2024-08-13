@@ -1,15 +1,3 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notas</title>
-    <!-- Incluindo o Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="includes/css/styles.css">
-</head>
-
 <body>
     <main>
         <!-- Barra de pesquisa -->
@@ -23,7 +11,7 @@
                 data-target="#newNoteModal">
 
             <!-- Botão com ícone SVG para ordenação -->
-            <button type="button" class="sort-button" onclick="toggleRotate(); sortNotes();">
+            <button type="button" class="sort-button base-button" onclick="toggleRotate(); sortNotes();">
                 <img src="resources/svg/sort-button.svg" alt="Ícone de Ordenar" id="rotate-icon" width="24" height="24">
             </button>
 

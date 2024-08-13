@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     titleInput.value = data.titulo;
                     textarea.value = data.conteudo;
 
-                    // Ajuste a altura do textarea com base no comprimento do conteúdo
+                    // Ajusta a altura do textarea com base no comprimento do conteúdo
                     textarea.style.height = 'auto';
                     textarea.style.overflowY = 'auto';
                     if (data.conteudo.length > 1000) {
@@ -21,11 +21,22 @@ document.addEventListener('DOMContentLoaded', function () {
                     } else {
                         textarea.style.overflowY = 'hidden'; 
                     }
+
+                    // Atribui o ID da nota ao modal para ser usado ao salvar
+                    modal.setAttribute('data-note-id', noteId);
                 })
                 .catch(error => console.error('Erro ao buscar a nota:', error));
         });
     });
 
+    // Reseta o modal ao abrir (usado para criar uma nova nota)
+    $(modal).on('show.bs.modal', function () {
+        titleInput.value = '';
+        textarea.value = '';
+        modal.removeAttribute('data-note-id');  // Remove o ID para criar uma nova nota
+    });
+
+    // Salvamento ao fechar o modal
     $(modal).on('hide.bs.modal', function () {
         const title = titleInput.value.trim();
         const description = textarea.value.trim();
@@ -38,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     'Content-Type': 'application/x-www-form-urlencoded',
                 },
                 body: new URLSearchParams({
-                    'id': noteId,
+                    'id': noteId || '',  // Envia o ID se existir, ou uma string vazia para criar uma nova nota
                     'titulo': title,
                     'conteudo': description
                 })
