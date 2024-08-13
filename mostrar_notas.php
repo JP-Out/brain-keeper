@@ -19,21 +19,31 @@ if (!function_exists('truncarTexto')) {
 }
 ?>
 
-<!-- Masonry CDN -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
-<!-- Arquivo JS personalizado -->
-<script src="includes/js/masonry.js"></script>
-<script src="includes/js/drag_area.js"></script>
-
 <div class="notas-container">
     <link rel="stylesheet" href="includes/css/view-notes.css">
+    <link rel="stylesheet" href="includes/css/styles.css">
+
     <?php foreach ($notas as $nota): ?>
         <div class="nota <?= strlen($nota['conteudo']) > 500 ? 'truncate' : '' ?>" data-id="<?= $nota['id'] ?>"
             data-toggle="modal" data-target="#newNoteModal">
-            <h3><?= htmlspecialchars($nota['titulo']) ?></h3>
-            <p><?= nl2br(htmlspecialchars(truncarTexto($nota['conteudo']))) ?></p>
-            <small><?= htmlspecialchars($nota['data_criacao']) ?></small>
+            <div class="nota-content">
+                <div class="more-options">
+                    <button class="more-settings-btn base-button" onclick="toggleRotate90(event, this);">
+                        <img src="resources/svg/more-options.svg" class="rotate-icon90" alt="Ícone de Mais Opções"
+                            width="24" height="24">
+                    </button>
+                    <div class="options-note-submenu">
+                        <ul>
+                            <li><a href="#">Opção 1</a></li>
+                            <li><a href="#">Opção 2</a></li>
+                            <li><a href="#">Opção 3</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <h3><?= htmlspecialchars($nota['titulo']) ?></h3>
+                <p><?= nl2br(htmlspecialchars(truncarTexto($nota['conteudo']))) ?></p>
+                <small><?= htmlspecialchars($nota['data_criacao']) ?></small>
+            </div>
         </div>
-
     <?php endforeach; ?>
 </div>

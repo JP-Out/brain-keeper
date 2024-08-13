@@ -31,14 +31,7 @@
         </div>
     </div>
 
-    <!-- Incluindo o jQuery e o Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <!-- Inclundo o JS da pagina -->
-    <script src="includes/js/nota_modal.js"></script>
-    <script src="includes/js/modal_adjust.js"></script>
 </body>
 
 </html>

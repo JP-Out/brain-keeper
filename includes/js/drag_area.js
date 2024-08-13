@@ -11,6 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Função para iniciar a seleção
     function startSelection(e) {
+        // Desmarcar todas as notas
+        notas.forEach(nota => nota.classList.remove('selected'));
+
         isSelecting = true;
         startX = e.pageX - notasContainer.offsetLeft;
         startY = e.pageY - notasContainer.offsetTop;
@@ -70,19 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
     notasContainer.addEventListener('mousemove', updateSelection);
     notasContainer.addEventListener('mouseup', endSelection);
     notasContainer.addEventListener('mouseleave', endSelection);
-});
 
-// CSS para desativar a seleção de texto (opcional, se necessário)
-/*
-.no-select {
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-}
-*/
-
-// Previne a seleção de texto ao clicar e arrastar no container de notas
-notasContainer.addEventListener('mousedown', (event) => {
-    event.preventDefault();
+    // Previne a seleção de texto ao clicar e arrastar no container de notas
+    notasContainer.addEventListener('mousedown', (event) => {
+        event.preventDefault();
+    });
 });

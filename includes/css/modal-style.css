@@ -4,10 +4,14 @@
 }
 
 .modal-content {
-    background-color: #454547;
+    background-color: #454547ea;
     border: 1px solid #ccc;
     /* Borda fina */
     font-size: 18px;
+}
+
+.modal-backdrop {
+    background-color: #0000004f; /* Preto com 50% de opacidade */
 }
 
 /* Oculta o botão de fechar do modal */
@@ -18,7 +22,7 @@
 /* Remove a borda do textarea */
 #noteDescription,
 #noteTitle {
-    background-color: #525355;
+    background-color: #454547ea;
     color: #ffffff;
     border: none;
     box-shadow: none;
@@ -51,9 +55,9 @@
 
 /* Para as notas existentes */
 textarea {
-    min-height: 80px; /* Altura padrão para novas notas */
-    max-height: 600px; /* Altura máxima para notas grandes com rolagem */
+    height: 600px; /* Altura máxima para notas grandes */
     overflow-y: auto; /* Permite rolagem vertical */
-    resize: none; /* Desabilita a opção de redimensionar o textarea */
+    resize: none; /* Desabilita o redimensionamento manual */
     width: 100%; /* Garante que o textarea use toda a largura disponível */
+    box-sizing: border-box; /* Garante que o padding não afete a largura */
 }
