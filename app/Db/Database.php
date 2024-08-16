@@ -37,12 +37,10 @@ class Database
             $statement->execute($params);
             return $statement;
         } catch (PDOException $e) {
-            // Adiciona um log mais detalhado ou exibe a mensagem de erro
-            echo "Erro na consulta: " . $e->getMessage();
+            error_log("Erro na consulta: " . $e->getMessage());
             return false;
         }
     }
-
 
     public function insert($values)
     {
@@ -112,7 +110,8 @@ class Database
     public function delete($where)
     {
         $query = 'DELETE FROM ' . $this->table . ' WHERE ' . $where;
-
+        // Log para depuração
+        error_log("SQL Query: $query");
         return $this->execute($query);
     }
 

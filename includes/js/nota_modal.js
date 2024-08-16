@@ -60,6 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     titleInput.value = '';
                     textarea.value = '';
                     textarea.style.minHeight = '80px'; // Restaura a altura mínima para o textarea
+                    location.reload();
                 })
                 .catch(error => console.error('Error:', error));
         }

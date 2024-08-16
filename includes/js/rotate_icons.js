@@ -13,13 +13,6 @@ function toggleRotate90(e, button) {
     
     icon.classList.toggle('rotated-90', !isVisible);
     submenu.classList.toggle('show', !isVisible);
-
-    document.addEventListener('click', function(event) {
-        if (!button.contains(event.target) && !submenu.contains(event.target)) {
-            submenu.classList.remove('show');
-            icon.classList.remove('rotated-90');
-        }
-    }, { once: true });
 }
 
 

@@ -70,13 +70,15 @@
     position: absolute; /* Posiciona o submenu em relação ao botão */
     top: 100%; /* Ajusta para que o submenu fique logo abaixo do botão */
     left: 0; /* Alinha o submenu à esquerda do botão */
-    background: white; /* Altere conforme o design */
-    border: 1px solid #ddd;
+    background: #FEEFC3;
+    border: 2px solid #202020;
     padding: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     z-index: 1000; /* Garante que o submenu fique acima de outros elementos */
-    min-width: 150px; /* Define uma largura mínima para o submenu */
-    max-width: 300px; /* Define uma largura máxima para o submenu */
+    white-space: nowrap;
+    width: auto;
+    min-width: 50px;
+    border-radius: 8px;
 }
 
 .options-note-submenu ul {
@@ -86,17 +88,34 @@
 }
 
 .options-note-submenu li {
-    margin: 5px 0;
+    margin: 2px 0; /* Aumenta a margem entre os itens */
+    text-align: left;
+    position: relative; /* Necessário para o posicionamento do sombreado */
 }
 
 .options-note-submenu li a {
+    display: block; /* Faz o link ocupar o espaço total do item */
     text-decoration: none;
-    color: #333;
+    color: #333333;
+    padding: 10px; /* Adiciona um pouco de preenchimento */
+    border-radius: 4px; /* Adiciona bordas arredondadas aos itens */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Transições suaves */
+}
+
+/* Para o link excluir */
+.options-note-submenu ul li:nth-of-type(3) a {
+    color: #FF5733;
+}
+
+.options-note-submenu li:hover a {
+    background-color: #f0e5b2; /* Adiciona um fundo claro ao passar o mouse */
+}
+
+.options-note-submenu li:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* Aumenta o sombreado do item ao passar o mouse */
+    cursor: pointer;
 }
 
 .options-note-submenu.show {
     display: block; /* Mostra o submenu quando necessário */
 }
-
-
-

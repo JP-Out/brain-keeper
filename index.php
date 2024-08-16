@@ -5,7 +5,7 @@
     include 'includes/footer.php';
 
     // Verifica se a página 'nota_modal.php' foi carregada
-    if (basename($_SERVER['REQUEST_URI']) == 'nota_modal.php') {
+    if (basename($_SERVER['REQUEST_URL']) == 'nota_modal.php') {
         include 'nota_modal.php';
     }
 ?>

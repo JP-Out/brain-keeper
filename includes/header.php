@@ -9,7 +9,7 @@
     <!-- Incluindo o Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="includes/css/styles.css">
-    <link rel="stylesheet" href="includes/css/butons-styles.css">
+    <link rel="stylesheet" href="includes/css/buttons-styles.css">
     <link rel="stylesheet" href="includes/css/modal-style.css">
 
     <!-- Incluindo o jQuery -->
@@ -20,11 +20,11 @@
 
     <!-- Incluindo o Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    
-    <!-- Incluindo Script para os botões que rotacionam -->
+
+    <!-- Script js para os botões que rotacionam -->
     <script src="includes/js/rotate_icons.js" defer></script>
-    
-    <!-- Scripts para o sort button -->
+
+    <!-- Script js para o sort button -->
     <script src="includes/js/sort_notes.js" defer></script>
 
     <!-- Script js para organizar a estrutura das notas -->
@@ -35,6 +35,13 @@
 
     <!-- Scripts para o botão mais opções -->
     <script src="includes/js/more_option.js"></script>
+    <script src="includes/js/submenu_handler.js"></script>
+
+    <!-- Script js para o botão arquivar do submenu -->
+    <script src="includes/js/archive_handler.js"></script>
+
+    <!-- Script js para o botão excluir do submenu -->
+    <script src="includes/js/delete_handler.js"></script>
 
     <!-- Inclundo o JS da pagina -->
     <script src="includes/js/nota_modal.js"></script>

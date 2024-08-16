@@ -28,15 +28,15 @@ if (!function_exists('truncarTexto')) {
             data-toggle="modal" data-target="#newNoteModal">
             <div class="nota-content">
                 <div class="more-options">
-                    <button class="more-settings-btn base-button" onclick="toggleRotate90(event, this);">
+                    <button class="more-settings-btn base-button">
                         <img src="resources/svg/more-options.svg" class="rotate-icon90" alt="Ícone de Mais Opções"
                             width="24" height="24">
                     </button>
                     <div class="options-note-submenu">
                         <ul>
-                            <li><a href="#">Opção 1</a></li>
-                            <li><a href="#">Opção 2</a></li>
-                            <li><a href="#">Opção 3</a></li>
+                            <li><a class="menu-item" data-id="<?= $nota['id'] ?>">Editar</a></li>
+                            <li><a class="menu-item" data-id="<?= $nota['id'] ?>">Arquivar</a></li>
+                            <li><a class="menu-item" data-id="<?= $nota['id'] ?>">Excluir</a></li>
                         </ul>
                     </div>
                 </div>
