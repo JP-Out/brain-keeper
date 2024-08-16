@@ -1,11 +1,23 @@
 <?php
 require_once 'app/Db/Database.php';
 
+// Captura o termo de pesquisa da query string
+$search = $_GET['search'] ?? '';
+
 // Inicialize a classe Database com a tabela 'notas'
 $db = new \App\Db\Database('notas');
 
-// Busca todas as notas, ordenadas pela data de criação
-$notas = $db->select(null, 'data_criacao DESC')->fetchAll(PDO::FETCH_ASSOC);
+// Condição de busca
+$whereClause = '';
+$params = [];
+if ($search) {
+    $search = '%' . $search . '%';
+    $whereClause = "(titulo LIKE :search OR conteudo LIKE :search)";
+    $params = [':search' => $search];
+}
+
+// Busca todas as notas que correspondem ao termo de pesquisa, ordenadas pela data de criação
+$notas = $db->select($whereClause, 'data_criacao DESC', null, '*', $params)->fetchAll(PDO::FETCH_ASSOC);
 
 if (!function_exists('truncarTexto')) {
     // Função para truncar o texto com limite de 500 caracteres

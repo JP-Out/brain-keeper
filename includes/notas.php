@@ -3,9 +3,10 @@
         <!-- Barra de pesquisa -->
         <section class="search-section">
             <div class="search-container">
-                <img src="resources/svg/search-icon.svg" alt="Ícone de Pesquisa" class="search-icon">
                 <input type="search" class="search" placeholder="Pesquisar...">
+                <img src="resources/svg/search-icon.svg" alt="Ícone de Pesquisa" class="search-icon">
             </div>
+
         </section>
         <hr> <!-- Divisor -->
         <section class="note-editor">

@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 event.stopPropagation(); // Impede a propagação do clique para a nota
                 
                 // Considerar a adição de um modal de confirmação no futuro
-                alert('Não deu tempo 😢... Por que não um dia?');
+                alert('~(>_<。)＼\nParece que você, quer testar uma função que não deu tempo de implementar...');
             });
         }
     });

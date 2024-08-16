@@ -46,6 +46,10 @@
     <!-- Inclundo o JS da pagina -->
     <script src="includes/js/nota_modal.js"></script>
     <script src="includes/js/modal_adjust.js"></script>
+    
+    <!-- Script js para a função de busca de notas -->
+    <script src="includes/js/search.js"></script>
+     
 
     <!-- Masonry CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>

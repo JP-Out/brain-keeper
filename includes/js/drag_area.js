@@ -7,16 +7,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // Cria o elemento para a área de seleção
     const selectionArea = document.createElement('div');
     selectionArea.classList.add('selection-area');
-    notasContainer.appendChild(selectionArea);
+    document.body.appendChild(selectionArea); // Anexa a seleção ao corpo do documento
 
     // Função para iniciar a seleção
     function startSelection(e) {
+        if (e.target.matches('input, textarea, select, .search')) {
+            return;
+        }
+
         // Desmarcar todas as notas
         notas.forEach(nota => nota.classList.remove('selected'));
 
         isSelecting = true;
-        startX = e.pageX - notasContainer.offsetLeft;
-        startY = e.pageY - notasContainer.offsetTop;
+        startX = e.pageX;
+        startY = e.pageY;
         selectionArea.style.left = startX + 'px';
         selectionArea.style.top = startY + 'px';
         selectionArea.style.width = '0px';
@@ -31,8 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateSelection(e) {
         if (!isSelecting) return;
 
-        const currentX = e.pageX - notasContainer.offsetLeft;
-        const currentY = e.pageY - notasContainer.offsetTop;
+        const currentX = e.pageX;
+        const currentY = e.pageY;
 
         const width = Math.abs(currentX - startX);
         const height = Math.abs(currentY - startY);
@@ -68,14 +72,16 @@ document.addEventListener('DOMContentLoaded', () => {
         selectionArea.style.display = 'none';
     }
 
-    // Eventos para o mouse
-    notasContainer.addEventListener('mousedown', startSelection);
-    notasContainer.addEventListener('mousemove', updateSelection);
-    notasContainer.addEventListener('mouseup', endSelection);
-    notasContainer.addEventListener('mouseleave', endSelection);
+    // Eventos para o mouse em toda a janela
+    document.addEventListener('mousedown', startSelection);
+    document.addEventListener('mousemove', updateSelection);
+    document.addEventListener('mouseup', endSelection);
+    document.addEventListener('mouseleave', endSelection);
 
-    // Previne a seleção de texto ao clicar e arrastar no container de notas
-    notasContainer.addEventListener('mousedown', (event) => {
-        event.preventDefault();
+    // Previne a seleção de texto ao clicar e arrastar
+    document.addEventListener('mousedown', (event) => {
+        if (!event.target.matches('input, textarea, select, .search')) {
+            event.preventDefault();
+        }
     });
 });

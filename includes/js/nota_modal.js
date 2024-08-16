@@ -5,10 +5,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Função para ajustar a altura do textarea com base no conteúdo
     function autoResizeTextarea() {
-        textarea.style.height = '600'; // Reseta a altura
+        textarea.style.height = 'auto'; // Reseta a altura
         textarea.style.height = Math.min(textarea.scrollHeight, 600) + 'px'; // Ajusta para o tamanho do conteúdo, com altura máxima
         textarea.style.overflowY = 'auto';
-
     }
 
     document.querySelectorAll('.nota').forEach(nota => {
@@ -20,6 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 .then(data => {
                     titleInput.value = data.titulo;
                     textarea.value = data.conteudo;
+                    autoResizeTextarea(); // Ajusta o tamanho do textarea após carregar o conteúdo
 
                     // Atribui o ID da nota ao modal para ser usado ao salvar
                     modal.setAttribute('data-note-id', noteId);
@@ -34,6 +34,11 @@ document.addEventListener('DOMContentLoaded', function () {
         textarea.value = '';
         textarea.style.height = 'auto'; // Reseta a altura do textarea
         modal.removeAttribute('data-note-id');  // Remove o ID para criar uma nova nota
+    });
+
+    // Ajusta a altura do textarea ao exibir o modal
+    $(modal).on('shown.bs.modal', function () {
+        autoResizeTextarea();
     });
 
     // Salvamento ao fechar o modal
@@ -60,7 +65,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     titleInput.value = '';
                     textarea.value = '';
                     textarea.style.minHeight = '80px'; // Restaura a altura mínima para o textarea
-                    location.reload();
                 })
                 .catch(error => console.error('Error:', error));
         }
