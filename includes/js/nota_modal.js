@@ -68,4 +68,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Adiciona o evento de input para redimensionar o textarea enquanto digita
     textarea.addEventListener('input', autoResizeTextarea);
+
+    // Adiciona o evento para mover de titulo à descrição, ao pressionar Enter
+    titleInput.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+            event.preventDefault(); // Evita o comportamento padrão do Enter
+            textarea.focus(); // Move o foco para o campo de descrição
+        }
+    });
 });

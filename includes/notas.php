@@ -2,7 +2,10 @@
     <main>
         <!-- Barra de pesquisa -->
         <section class="search-section">
-            <input type="search" class="search" placeholder="Pesquisar...">
+            <div class="search-container">
+                <img src="resources/svg/search-icon.svg" alt="Ícone de Pesquisa" class="search-icon">
+                <input type="search" class="search" placeholder="Pesquisar...">
+            </div>
         </section>
         <hr> <!-- Divisor -->
         <section class="note-editor">
@@ -23,7 +26,4 @@
 
     <!-- Inclui o modal do arquivo nota_modal.php -->
     <?php include 'nota_modal.php'; ?>
-
 </body>
-
-</html>

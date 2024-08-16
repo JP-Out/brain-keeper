@@ -121,17 +121,43 @@ hr {
     box-shadow: 0 2px 5px rgba(80, 78, 78, 0.815);
 }
 
-/* Barra de pesquisa  */
-.search::placeholder{
-    color: rgba(255, 255, 255, 0.644);
+/* Barra de pesquisa */
+.search-section {
+    margin-bottom: 20px; /* Espaço abaixo da barra de pesquisa */
+}
+
+.search-wrapper {
+    position: relative; /* Para posicionar o ícone dentro da barra de pesquisa */
+    display: flex;
+    left: 2%;
+}
+
+.search-icon {
+    position: absolute;
+    left: 1.3%; /* Espaçamento interno à esquerda */
+    width: 24px; /* Tamanho do ícone */
+    height: 24px; /* Tamanho do ícone */
+    top: 10%;
+    transform: translateY(-50%);
+}
+
+.search {
+    padding-left: 40px; /* Espaço para acomodar o ícone dentro da barra de pesquisa */
+    background-color: #525355; /* Cor de fundo da barra de pesquisa */
+    border: 1px solid #ccc; /* Borda da barra de pesquisa */
+    border-radius: 8px; /* Bordas arredondadas */
+    color: rgba(255, 255, 255, 0.644); /* Cor do texto */
+    font-size: 18px; /* Tamanho da fonte */
+    width: 250px; /* Largura da barra de pesquisa */
 }
 
 .search:focus {
-    outline: none; /* Remover o contorno quando selecionado */
+    outline: none; /* Remove o contorno quando o campo de pesquisa está em foco */
+    box-shadow: none; /* Remove a sombra quando o campo de pesquisa está em foco */
 }
 
-.search:hover {
-    box-shadow: 1.2px 1.8px 4px rgba(190, 187, 187, 0.596);
+.search::placeholder {
+    padding-left: 8%;
 }
 
 /* Container geral para ajustar o layout dos botões */
