@@ -46,10 +46,10 @@
     <!-- Inclundo o JS da pagina -->
     <script src="includes/js/nota_modal.js"></script>
     <script src="includes/js/modal_adjust.js"></script>
-    
+
     <!-- Script js para a função de busca de notas -->
     <script src="includes/js/search.js"></script>
-     
+
 
     <!-- Masonry CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
@@ -62,9 +62,15 @@
             <h1><a href="index.php">Brain Keeper</a></h1>
             <nav>
                 <ul>
-                    <li> <button type="button" class="user-login base-button">
+                    <li>
+                        <button type="button" class="user-login base-button">
                             <img src="resources/svg/user-login.svg" alt="Ícone de Usuario" width="24" height="24">
                         </button>
+                        <div class="options-user-submenu">
+                            <ul>
+                                <li><a class="user-item" href="logout.php">Logout</a></li>
+                            </ul>
+                        </div>
                     </li>
                 </ul>
             </nav>

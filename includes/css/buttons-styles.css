@@ -12,8 +12,6 @@
 }
 
 .base-button:hover {
-    -webkit-box-shadow: inset -1px 0px 132px -21px rgba(0,0,0,0.31);
-    -moz-box-shadow: inset -1px 0px 132px -21px rgba(0,0,0,0.31);
     box-shadow: inset -1px 0px 132px -21px rgba(0,0,0,0.31);
     cursor: pointer;
 }
@@ -29,6 +27,113 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative; /* Posiciona o submenu em relação a este botão */
+    left: 100%;
+}
+
+/* Estilo para o submenu do login */
+.options-user-submenu {
+    display: none; /* Inicialmente escondido */
+    position: absolute; /* Posiciona o submenu em relação ao botão */
+    top: 90%; /* Posiciona abaixo do ícone de login */
+    left: 90%; /* Centraliza em relação ao ícone de login */
+    transform: translateX(-50%); /* Ajuste final para centralizar o submenu */
+    background: #FEEFC3;
+    border: 2px solid #202020;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    z-index: 1000; /* Garante que o submenu fique acima de outros elementos */
+    white-space: nowrap;
+    min-width: 100px;
+    border-radius: 8px;
+}
+
+.options-user-submenu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.options-user-submenu li {
+    margin: 2px 0;
+    text-align: left;
+}
+
+.options-user-submenu li a {
+    display: block;
+    text-decoration: none;
+    color: #333333;
+    padding: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.options-user-submenu li:hover a {
+    background-color: #f0e5b2;
+}
+
+.options-user-submenu li:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* Ajusta o sombreado dos itens ao passar o mouse */
+    cursor: pointer;
+}
+
+.options-user-submenu.show {
+    display: block; /* Mostra o submenu quando necessário */
+}
+
+/* Estilo para o submenu das notas */
+.options-note-submenu {
+    display: none;
+    position: absolute;
+    top: 100%; /* Ajusta para que o submenu fique logo abaixo do botão */
+    left: 0; /* Alinha o submenu à esquerda do botão */
+    background: #FEEFC3;
+    border: 2px solid #202020;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Ajusta o sombreado para uniformidade */
+    z-index: 1000;
+    white-space: nowrap;
+    width: auto;
+    min-width: 50px;
+    border-radius: 8px;
+}
+
+.options-note-submenu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.options-note-submenu li {
+    margin: 2px 0;
+    text-align: left;
+}
+
+.options-note-submenu li a {
+    display: block;
+    text-decoration: none;
+    color: #333333;
+    padding: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+/* Para o link excluir */
+.options-note-submenu ul li:nth-of-type(3) a {
+    color: #FF5733;
+}
+
+.options-note-submenu li:hover a {
+    background-color: #f0e5b2;
+}
+
+.options-note-submenu li:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* Ajusta o sombreado dos itens ao passar o mouse */
+    cursor: pointer;
+}
+
+.options-note-submenu.show {
+    display: block; /* Mostra o submenu quando necessário */
 }
 
 /* Estilo para .sort-button */
@@ -44,17 +149,18 @@
     transform: rotate(-180deg); /* Gira 180 graus */
 }
 
-/* Estilo para .more-settings-btn */
+/* Estilo para o botão de configurações das notas */
 .more-options {
-    position: relative; /* Garante que o submenu se posicione em relação a este contêiner */
+    position: relative;
     margin-left: 90%;
 }
 
+/* Estilo do botão de mais configurações */
 .more-settings-btn {
     border: none;
-    padding: 0px;
+    padding: 0;
     background: transparent; /* Evita interferências de estilo no botão */
-    position: relative; /* Certifica-se de que o botão não afeta o layout */
+    position: relative;
 }
 
 .rotate-icon90 {
@@ -63,59 +169,4 @@
 
 .rotated-90 {
     transform: rotate(-90deg); /* Gira 90 graus */
-}
-
-.options-note-submenu {
-    display: none; /* Inicialmente escondido */
-    position: absolute; /* Posiciona o submenu em relação ao botão */
-    top: 100%; /* Ajusta para que o submenu fique logo abaixo do botão */
-    left: 0; /* Alinha o submenu à esquerda do botão */
-    background: #FEEFC3;
-    border: 2px solid #202020;
-    padding: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    z-index: 1000; /* Garante que o submenu fique acima de outros elementos */
-    white-space: nowrap;
-    width: auto;
-    min-width: 50px;
-    border-radius: 8px;
-}
-
-.options-note-submenu ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.options-note-submenu li {
-    margin: 2px 0; /* Aumenta a margem entre os itens */
-    text-align: left;
-    position: relative; /* Necessário para o posicionamento do sombreado */
-}
-
-.options-note-submenu li a {
-    display: block; /* Faz o link ocupar o espaço total do item */
-    text-decoration: none;
-    color: #333333;
-    padding: 10px; /* Adiciona um pouco de preenchimento */
-    border-radius: 4px; /* Adiciona bordas arredondadas aos itens */
-    transition: background-color 0.3s, box-shadow 0.3s; /* Transições suaves */
-}
-
-/* Para o link excluir */
-.options-note-submenu ul li:nth-of-type(3) a {
-    color: #FF5733;
-}
-
-.options-note-submenu li:hover a {
-    background-color: #f0e5b2; /* Adiciona um fundo claro ao passar o mouse */
-}
-
-.options-note-submenu li:hover {
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* Aumenta o sombreado do item ao passar o mouse */
-    cursor: pointer;
-}
-
-.options-note-submenu.show {
-    display: block; /* Mostra o submenu quando necessário */
 }
