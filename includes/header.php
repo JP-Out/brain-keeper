@@ -68,7 +68,10 @@
                         </button>
                         <div class="options-user-submenu">
                             <ul>
-                                <li><a class="user-item" href="logout.php">Logout</a></li>
+                                <li class="submenu-item">
+                                    <img src="resources/svg/logout-user.svg" alt="Ícone de Logout" width="24" height="24" class="submenu-icon">
+                                    <a class="user-item" href="logout.php">Logout</a>
+                                </li>
                             </ul>
                         </div>
                     </li>

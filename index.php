@@ -1,13 +1,27 @@
 <?php
-    // Include header, notas, e footer
-    include 'includes/header.php';
-    include 'includes/notas.php';
-    include 'includes/footer.php';
+    require_once 'app/Session/Login.php';
 
+    Use \App\Session\Login;
+    
+    // Inclui o header e footer
+    include 'includes/header.php';
+    include 'includes/footer.php';
+    
+    $isLogged = Login::isLogged();
+    
     // Verifica se a página 'nota_modal.php' foi carregada
     if (basename($_SERVER['REQUEST_URI']) == 'nota_modal.php') {
         include 'nota_modal.php';
     }
+    
+    if (!$isLogged) {
+        header('location: login.php');
+        exit;
+    }
+
+    // Inclui as notas
+    include 'includes/notas.php';
+
 ?>
 
 <script>

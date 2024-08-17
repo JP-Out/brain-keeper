@@ -59,8 +59,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     'conteudo': description
                 })
             })
-                .then(response => response.text())
-                .then(data => {
+            .then(response => response.text())
+            .then(data => {
                     console.log('Success:', data);
                     titleInput.value = '';
                     textarea.value = '';

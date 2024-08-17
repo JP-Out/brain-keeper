@@ -1,5 +1,6 @@
 <?php
 require_once 'app/Db/Database.php';
+require_once 'app/Db/Login.php';
 
 // Captura o termo de pesquisa da query string
 $search = $_GET['search'] ?? '';
