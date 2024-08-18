@@ -1,6 +1,12 @@
 <?php
 require_once 'app/Db/Database.php';
-require_once 'app/Db/Login.php';
+require_once 'app/Session/Login.php';
+
+// Verifica se o usuário está logado
+if (!\App\Session\Login::isLogged()) {
+    header('Location: includes/login.php');
+    exit;
+}
 
 // Captura o termo de pesquisa da query string
 $search = $_GET['search'] ?? '';
@@ -9,15 +15,16 @@ $search = $_GET['search'] ?? '';
 $db = new \App\Db\Database('notas');
 
 // Condição de busca
-$whereClause = '';
-$params = [];
+$whereClause = 'usuario_id = :usuario_id'; // Adiciona condição para o usuário logado
+$params = [':usuario_id' => $_SESSION['usuario']['id']];
+
 if ($search) {
     $search = '%' . $search . '%';
-    $whereClause = "(titulo LIKE :search OR conteudo LIKE :search)";
-    $params = [':search' => $search];
+    $whereClause .= " AND (titulo LIKE :search OR conteudo LIKE :search)";
+    $params[':search'] = $search;
 }
 
-// Busca todas as notas que correspondem ao termo de pesquisa, ordenadas pela data de criação
+// Busca todas as notas que correspondem ao termo de pesquisa e pertencem ao usuário logado
 $notas = $db->select($whereClause, 'data_criacao DESC', null, '*', $params)->fetchAll(PDO::FETCH_ASSOC);
 
 if (!function_exists('truncarTexto')) {
@@ -33,9 +40,6 @@ if (!function_exists('truncarTexto')) {
 ?>
 
 <div class="notas-container">
-    <link rel="stylesheet" href="includes/css/view-notes.css">
-    <link rel="stylesheet" href="includes/css/styles.css">
-
     <?php foreach ($notas as $nota): ?>
         <div class="nota <?= strlen($nota['conteudo']) > 500 ? 'truncate' : '' ?>" data-id="<?= $nota['id'] ?>"
             data-toggle="modal" data-target="#newNoteModal">
@@ -47,9 +51,21 @@ if (!function_exists('truncarTexto')) {
                     </button>
                     <div class="options-note-submenu">
                         <ul>
-                            <li><a class="menu-item" data-id="<?= $nota['id'] ?>">Editar</a></li>
-                            <li><a class="menu-item" data-id="<?= $nota['id'] ?>">Arquivar</a></li>
-                            <li><a class="menu-item" data-id="<?= $nota['id'] ?>">Excluir</a></li>
+                            <li>
+                                <img src="resources/svg/menu-item-edit.svg" alt="Ícone de Logout" width="24" height="24"
+                                class="submenu-icon">
+                                <a class="menu-item" data-id="<?= $nota['id'] ?>">Editar</a>
+                            </li>
+                            <li>
+                                <img src="resources/svg/menu-item-archive.svg" alt="Ícone de Logout" width="24" height="24"
+                                class="submenu-icon">
+                                <a class="menu-item" data-id="<?= $nota['id'] ?>">Arquivar</a>
+                            </li>
+                            <li>
+                                <img src="resources/svg/menu-item-delete.svg" alt="Ícone de Logout" width="24" height="24"
+                                class="submenu-icon">
+                                <a class="menu-item" data-id="<?= $nota['id'] ?>">Excluir</a>
+                            </li>
                         </ul>
                     </div>
                 </div>

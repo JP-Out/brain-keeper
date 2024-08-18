@@ -1,4 +1,7 @@
 <body>
+    <!-- Incluindo o Bootstrap e CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="includes/css/styles.css">
     <main>
         <!-- Barra de pesquisa -->
         <section class="search-section">
@@ -27,4 +30,13 @@
 
     <!-- Inclui o modal do arquivo nota_modal.php -->
     <?php include 'nota_modal.php'; ?>
+
+    <!-- Incluindo o jQuery e o Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Scripts para o sort button -->
+    <script src="includes/js/sort_notes.js" defer></script>
+    <script src="includes/js/rotate_icons.js" defer></script>
 </body>

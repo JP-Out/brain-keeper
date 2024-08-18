@@ -1,27 +1,45 @@
+<!-- Incluindo Masonry -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
+
+<!-- Incluido scripts js -->
+<script src="includes/js/masonry.js"></script>
+<script src="includes/js/drag_area.js"></script>
+<script src="includes/js/more_option.js"></script>
+<script src="includes/js/submenu_handler.js"></script>
+<script src="includes/js/archive_handler.js"></script>
+<script src="includes/js/delete_handler.js"></script>
+<script src="includes/js/search.js"></script>
+
+<link rel="stylesheet" href="includes/css/styles.css">
+<link rel="stylesheet" href="includes/css/view-notes.css">
+<link rel="stylesheet" href="includes/css/buttons-styles.css">
+<link rel="stylesheet" href="includes/css/modal-style.css">
+
+
 <?php
-    require_once 'app/Session/Login.php';
+require_once 'app/Session/Login.php';
 
-    Use \App\Session\Login;
-    
-    // Inclui o header e footer
-    include 'includes/header.php';
-    include 'includes/footer.php';
-    
-    $isLogged = Login::isLogged();
-    
-    // Verifica se a página 'nota_modal.php' foi carregada
-    if (basename($_SERVER['REQUEST_URI']) == 'nota_modal.php') {
-        include 'nota_modal.php';
-    }
-    
-    if (!$isLogged) {
-        header('location: login.php');
-        exit;
-    }
+Use \App\Session\Login;
 
-    // Inclui as notas
-    include 'includes/notas.php';
+// Inclui o header
+include 'includes/header.php';
 
+
+$isLogged = Login::isLogged();
+
+// Verifica se a página 'nota_modal.php' foi carregada
+if (basename($_SERVER['REQUEST_URI']) == 'nota_modal.php') {
+    include 'nota_modal.php';
+}
+
+if (!$isLogged) {
+    header('location: includes/login.php');
+    exit;
+}
+
+// Inclui as notas e footer
+include 'includes/notas.php';
+include 'includes/footer.php';
 ?>
 
 <script>

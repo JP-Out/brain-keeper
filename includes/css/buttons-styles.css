@@ -21,19 +21,15 @@
 }
 
 /* Estilo para o submenu */
-/* Estilo para o submenu */
 .options-user-submenu {
     display: none; /* Inicialmente escondido */
     position: absolute; /* Posiciona o submenu em relação ao botão */
-    width: 115px;
-    height: 60px;
     top: 100%; /* Posiciona o submenu diretamente abaixo do botão */
     left: 1520px; /* Centraliza o submenu horizontalmente em relação ao botão */
     transform: translateX(-50%); /* Ajuste final para centralizar o submenu */
     background: #FEEFC3;
     border: 2px solid #202020;
     padding: 5px 5px; /* Ajuste o padding para tornar o menu menor */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     z-index: 1000; /* Garante que o submenu fique acima de outros elementos */
     white-space: nowrap;
     border-radius: 8px;
@@ -48,30 +44,60 @@
 
 /* Estilo para cada item do submenu */
 .submenu-item {
-    display: flex; /* Usa flexbox para alinhar o ícone e o texto horizontalmente */
-    align-items: center; /* Alinha o ícone e o texto verticalmente */
     margin: 2px 0;
     text-align: left;
 }
 
+/* Estilo para a saudação */
+.greeting-item {
+    display: block; /* Garante que a saudação ocupe uma linha completa */
+    box-shadow: none !important;
+    cursor: default !important;
+}
+
+header nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Estilo para o contêiner de logout */
+.logout-item {
+    display: block; /* Garante que o item de logout ocupe uma linha completa */
+}
+
+.logout-container {
+    display: flex; /* Usa flexbox para alinhar o ícone e o link horizontalmente */
+    align-items: center; /* Alinha o ícone e o link verticalmente */
+}
+
+/* Estilo para o ícone de logout */
+.submenu-icon {
+    margin-right: 2px; /* Espaço entre o ícone e o link */
+}
+
 /* Estilo para o link no submenu */
 .options-user-submenu li a {
-    display: block;
+    display: flex; /* Garante que o link ocupe apenas o espaço necessário */
     text-decoration: none;
-    color: #333333;
-    padding: 8px; /* Ajusta o padding para tornar o menu menor */
+    color: #FF5733;
+    padding: 2px; /* Ajusta o padding para tornar o menu menor */
     border-radius: 4px;
     transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 /* Estilo para o link quando em hover */
-.options-user-submenu, .submenu-icon li:hover a {
-    background-color: #f0e5b2;
+.options-user-submenu li a:hover {
+    background-color: #FEEFC3;
 }
 
 /* Estilo para o item do submenu quando em hover */
 .options-user-submenu li:hover {
     box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* Ajusta o sombreado dos itens ao passar o mouse */
+    border-radius: 4px;
     cursor: pointer;
 }
 
@@ -79,6 +105,7 @@
 .options-user-submenu.show {
     display: block;
 }
+
 
 /* Estilo para o submenu das notas */
 .options-note-submenu {
@@ -88,12 +115,10 @@
     left: 0; /* Alinha o submenu à esquerda do botão */
     background: #FEEFC3;
     border: 2px solid #202020;
-    padding: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Ajusta o sombreado para uniformidade */
-    z-index: 1000;
+    padding: 5px 5px; /* Ajuste o padding para tornar o menu menor */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Estilo base do submenu */
+    z-index: 1000; /* Garante que o submenu fique acima de outros elementos */
     white-space: nowrap;
-    width: auto;
-    min-width: 50px;
     border-radius: 8px;
 }
 
@@ -104,12 +129,19 @@
 }
 
 .options-note-submenu li {
+    display: flex;
+    align-items: center;
     margin: 2px 0;
     text-align: left;
 }
 
+.options-note-submenu li img {
+    margin-right: 10px; /* Espaço entre o ícone e o texto */
+}
+
 .options-note-submenu li a {
-    display: block;
+    display: flex; /* Faz o link ocupar apenas o espaço necessário */
+    align-items: center; /* Alinha verticalmente o texto */
     text-decoration: none;
     color: #333333;
     padding: 10px;
@@ -122,12 +154,14 @@
     color: #FF5733;
 }
 
-.options-note-submenu li:hover a {
-    background-color: #f0e5b2;
+.options-user-submenu li a.user-item:hover {
+    color: #FF5733 !important; /* Força a cor do texto para garantir que não seja sobrescrita */
+    background-color: #FEEFC3;
 }
 
 .options-note-submenu li:hover {
     box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* Ajusta o sombreado dos itens ao passar o mouse */
+    border-radius: 4px;
     cursor: pointer;
 }
 

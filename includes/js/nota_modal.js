@@ -59,12 +59,13 @@ document.addEventListener('DOMContentLoaded', function () {
                     'conteudo': description
                 })
             })
-            .then(response => response.text())
-            .then(data => {
+                .then(response => response.text())
+                .then(data => {
                     console.log('Success:', data);
                     titleInput.value = '';
                     textarea.value = '';
                     textarea.style.minHeight = '80px'; // Restaura a altura mínima para o textarea
+                    location.reload();
                 })
                 .catch(error => console.error('Error:', error));
         }

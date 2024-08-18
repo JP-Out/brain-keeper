@@ -30,6 +30,11 @@ class Database
         }
     }
 
+    public function getConnection()
+    {
+        return $this->connection;
+    }
+
     public function execute($query, $params = [])
     {
         try {
@@ -55,7 +60,6 @@ class Database
         return $this->connection->lastInsertId();
     }
 
-
     public function select($where = null, $order = null, $limit = null, $fields = "*", $params = [])
     {
         $where = strlen($where) ? 'WHERE ' . $where : '';
@@ -66,7 +70,6 @@ class Database
 
         return $this->execute($query, $params);
     }
-
 
     public function update(array $values, array $conditions)
     {

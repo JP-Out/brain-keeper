@@ -20,7 +20,7 @@ class Login{
 
     public static function requiredLogin(){
         if(!self::isLogged()){
-            header('location: login.php');
+            header('location: includes/login.php');
             exit;
         }
     }
@@ -46,7 +46,7 @@ class Login{
     public static function logout(){
         self::init();
         unset($_SESSION['usuario']);        
-        header('location: login.php');
+        header('location: includes/login.php');
         exit;
     }
 }
