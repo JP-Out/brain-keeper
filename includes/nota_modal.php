@@ -25,6 +25,11 @@
                             <textarea class="form-control" id="noteDescription"
                                 placeholder="Armazene seu passado..."></textarea>
                         </div>
+                        <!-- Utilizar este novo elemento como campo de descrição -->
+                        <!-- <div class="form-group">
+                            <div id="noteDescription" class="form-control" contenteditable="true"
+                                placeholder="Armazene seu passado..."></div>
+                        </div> -->
                     </form>
                 </div>
             </div>
