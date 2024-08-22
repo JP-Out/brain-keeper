@@ -1,20 +1,21 @@
 <!-- Incluindo Masonry -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
 
-<!-- Incluido scripts js -->
-<script src="includes/js/masonry.js"></script>
-<script src="includes/js/drag_area.js"></script>
-<script src="includes/js/more_option.js"></script>
-<script src="includes/js/submenu_handler.js"></script>
-<script src="includes/js/archive_handler.js"></script>
-<script src="includes/js/delete_handler.js"></script>
-<script src="includes/js/search.js"></script>
+<!-- Incluindo scripts js -->
+<script src="includes/js/masonry.js?v=<?php echo filemtime('includes/js/masonry.js'); ?>"></script>
+<script src="includes/js/drag_area.js?v=<?php echo filemtime('includes/js/drag_area.js'); ?>"></script>
+<script src="includes/js/more_option.js?v=<?php echo filemtime('includes/js/more_option.js'); ?>"></script>
+<script src="includes/js/submenu_handler.js?v=<?php echo filemtime('includes/js/submenu_handler.js'); ?>"></script>
+<script src="includes/js/archive_handler.js?v=<?php echo filemtime('includes/js/archive_handler.js'); ?>"></script>
+<script src="includes/js/delete_handler.js?v=<?php echo filemtime('includes/js/delete_handler.js'); ?>"></script>
+<script src="includes/js/search.js?v=<?php echo filemtime('includes/js/search.js'); ?>"></script>
 
-<link rel="stylesheet" href="includes/css/styles.css">
-<link rel="stylesheet" href="includes/css/view-notes.css">
-<link rel="stylesheet" href="includes/css/buttons-styles.css">
+
+<!-- Incluindo arquivos CSS com cache busting -->
+<link rel="stylesheet" href="includes/css/styles.css?v=<?php echo filemtime('includes/css/styles.css'); ?>">
+<link rel="stylesheet" href="includes/css/view-notes.css?v=<?php echo filemtime('includes/css/view-notes.css'); ?>">
+<link rel="stylesheet" href="includes/css/buttons-styles.css?v=<?php echo filemtime('includes/css/buttons-styles.css'); ?>">
 <link rel="stylesheet" href="includes/css/modal-style.css">
-
 
 <?php
 require_once 'app/Session/Login.php';

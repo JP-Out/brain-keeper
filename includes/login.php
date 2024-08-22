@@ -5,10 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notas</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/buttons-styles.css">
-    <script src="js/disable_buttons.js"></script>
+    <link rel="stylesheet" href="css/styles.css?v=<?php echo filemtime('css/styles.css'); ?>">
+    <link rel="stylesheet" href="css/buttons-styles.css?v=<?php echo filemtime('css/buttons-styles.css'); ?>">
+    <script src="js/disable_buttons.js?v=<?php echo filemtime('js/disable_buttons.js'); ?>"></script>
+
 </head>
+
 
 <body>
     <header>
