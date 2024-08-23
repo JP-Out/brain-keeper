@@ -174,7 +174,7 @@ header nav ul {
     margin-left: 10px; /* Espaço entre os botões */
 }
 
-#rotate-icon180 {
+.rotate-icon180 {
     transition: transform 0.18s ease; /* Efeito de rotação */
 }
 

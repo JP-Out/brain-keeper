@@ -35,18 +35,19 @@ header .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    flex-wrap: wrap; /* Permite que o conteúdo quebre em mais linhas se necessário */
 }
 
 header h1 {
     margin: 0;
-    margin-left: -10%;
     font-size: 30px;
+    white-space: nowrap; /* Impede a quebra automática de linha */
 }
 
 header h1 a {
-    color: #333; /* Cor do texto do link */
-    text-decoration: none; /* Remove o sublinhado */
-    transition: color 0.3s, text-decoration 0.3s; /* Transição suave para cor e sublinhado */
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s, text-decoration 0.3s;
 }
 
 header h1 a:active {
@@ -85,6 +86,23 @@ header nav ul li a:active {
 header nav ul li a:hover {
     color: #333; /* Mantém a cor do texto igual ao passar o mouse */
     text-decoration: none; /* Remove o sublinhado ao passar o mouse */
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 24px; /* Reduz o tamanho da fonte em telas menores */
+        white-space: normal; /* Permite a quebra de linha do texto */
+    }
+}
+
+@media (max-width: 576px) {
+    header h1 {
+        font-size: 20px; /* Reduz ainda mais o tamanho da fonte em telas muito pequenas */
+    }
+
+    header nav ul {
+        display: none; /* Oculta a navegação em telas muito pequenas */
+    }
 }
 
 /* Main Content */

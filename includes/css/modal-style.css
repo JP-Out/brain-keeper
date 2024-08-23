@@ -4,9 +4,18 @@
 }
 
 .modal-content {
-    background-color: #454547ea;
+    border-radius: 8px !important;
+    overflow: hidden;
+    background-clip: padding-box;
     border: 1px solid #ccc;
-    /* Borda fina */
+    background-color: #454547ea;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para destacar a modal */
+}
+
+
+.modal-body {
+    background-clip: padding-box; /* Garante que o fundo respeite os limites da borda */
+    background-color: #454547ea; /* Mesma cor de fundo da modal-content */
     font-size: 18px;
 }
 

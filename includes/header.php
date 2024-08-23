@@ -51,9 +51,6 @@ $user_name = isset($_SESSION['usuario']['nome']) ? $_SESSION['usuario']['nome'] 
             </nav>
         </div>
     </header>
-    <script>
-        // Mensagem de depuração, se necessário
-    </script>
 </body>
 
 </html>

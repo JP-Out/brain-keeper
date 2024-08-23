@@ -81,4 +81,14 @@ document.addEventListener('DOMContentLoaded', function () {
             textarea.focus(); // Move o foco para o campo de descrição
         }
     });
+
+    // Para não movimentar o header
+    $(document).on('show.bs.modal', function () {
+        var scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+        $('header').css('padding-right', scrollbarWidth + 'px');
+    });
+    
+    $(document).on('hidden.bs.modal', function () {
+        $('header').css('padding-right', '');
+    });
 });

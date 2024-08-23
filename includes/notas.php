@@ -1,7 +1,19 @@
 <body>
-    <!-- Incluindo o Bootstrap e CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="includes/css/styles.css?v=<?php echo filemtime('includes/css/styles.css'); ?>">
+    <link rel="stylesheet" href="includes/css/view-notes.css?v=<?php echo filemtime('includes/css/view-notes.css'); ?>">
+    <link rel="stylesheet"
+        href="includes/css/buttons-styles.css?v=<?php echo filemtime('includes/css/buttons-styles.css'); ?>">
+    <link rel="stylesheet"
+        href="includes/css/modal-style.css?v=<?php echo filemtime('includes/css/modal-style.css'); ?>">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
+
+    <script src="includes/js/notas.js?v=<?php echo filemtime('includes/js/notas.js'); ?>"></script>
+    <script src="includes/js/drag_area.js?v=<?php echo filemtime('includes/js/drag_area.js'); ?>"></script>
+    <script src="includes/js/submenu_handler.js?v=<?php echo filemtime('includes/js/submenu_handler.js'); ?>"></script>
+    <script src="includes/js/search.js?v=<?php echo filemtime('includes/js/search.js'); ?>"></script>
+    <script src="includes/js/sort_notes.js?v=<?php echo filemtime('includes/js/sort_notes.js'); ?>" defer></script>
 
     <main>
         <!-- Barra de pesquisa -->
@@ -19,8 +31,8 @@
                 data-target="#newNoteModal">
 
             <!-- Botão com ícone SVG para ordenação -->
-            <button type="button" class="sort-button base-button" onclick="toggleRotate180(); sortNotes();">
-                <img src="resources/svg/sort-button.svg" alt="Ícone de Ordenar" id="rotate-icon180" width="24"
+            <button type="button" class="sort-button base-button" onclick="sortNotes(this);">
+                <img src="resources/svg/sort-button.svg" alt="Ícone de Ordenar" class="rotate-icon180" width="24"
                     height="24">
             </button>
 
@@ -31,13 +43,4 @@
 
     <!-- Inclui o modal do arquivo nota_modal.php -->
     <?php include 'nota_modal.php'; ?>
-
-    <!-- Incluindo o jQuery e o Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    <!-- Scripts para o sort button -->
-    <script src="includes/js/sort_notes.js?v=<?php echo filemtime('includes/js/sort_notes.js'); ?>" defer></script>
-    <script src="includes/js/rotate_icons.js?v=<?php echo filemtime('includes/js/rotate_icons.js'); ?>" defer></script>
 </body>
