@@ -20,19 +20,40 @@
     outline: none; /* Remove o contorno quando selecionado */
 }
 
+/* Contêiner do menu de usuário */
+.user-menu-container {
+    position: relative; /* Contêiner relativo ao qual o submenu será posicionado */
+    display: inline-block; /* Garante que o contêiner se ajuste ao tamanho do botão */
+}
+
 /* Estilo para o submenu */
 .options-user-submenu {
     display: none; /* Inicialmente escondido */
-    position: absolute; /* Posiciona o submenu em relação ao botão */
-    top: 100%; /* Posiciona o submenu diretamente abaixo do botão */
-    left: 1520px; /* Centraliza o submenu horizontalmente em relação ao botão */
-    transform: translateX(-50%); /* Ajuste final para centralizar o submenu */
+    position: absolute; /* Posiciona o submenu em relação ao contêiner do botão */
+    top: 105%; /* Posiciona o submenu diretamente abaixo do botão */
+    left: 50%; /* Inicia o posicionamento do submenu no meio do contêiner */
+    transform: translateX(-50%); /* Centraliza o submenu */
     background: #FEEFC3;
     border: 2px solid #202020;
     padding: 5px 5px; /* Ajuste o padding para tornar o menu menor */
     z-index: 1000; /* Garante que o submenu fique acima de outros elementos */
     white-space: nowrap;
     border-radius: 8px;
+    max-width: 90vw; /* Limita a largura máxima do submenu a 90% da largura da viewport */
+    box-sizing: border-box; /* Inclui padding e borda no cálculo da largura */
+}
+
+.options-user-submenu::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #FEEFC3;
+    top: -10px;
 }
 
 /* Estilo para a lista do submenu */

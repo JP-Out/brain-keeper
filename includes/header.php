@@ -27,24 +27,26 @@ $user_name = isset($_SESSION['usuario']['nome']) ? $_SESSION['usuario']['nome'] 
             <nav>
                 <ul>
                     <li>
-                        <button type="button" class="user-login base-button">
-                            <img src="resources/svg/user-login.svg" alt="Ícone de Usuario" width="24" height="24">
-                        </button>
-                        <div class="options-user-submenu">
-                            <ul>
-                                <li class="submenu-item greeting-item">
-                                    <!-- Mensagem de saudação -->
-                                    <span>Olá, <?= htmlspecialchars($user_name) ?></span>
-                                </li>
-                                <li class="submenu-item logout-item">
-                                    <!-- Contêiner para ícone de logout e link -->
-                                    <div class="logout-container">
-                                        <img src="resources/svg/logout-user.svg" alt="Ícone de Logout" width="24"
-                                            height="24" class="submenu-icon">
-                                        <a class="user-item" href="logout.php">Logout</a>
-                                    </div>
-                                </li>
-                            </ul>
+                        <div class="user-menu-container">
+                            <button type="button" class="user-login base-button">
+                                <img src="resources/svg/user-login.svg" alt="Ícone de Usuario" width="24" height="24">
+                            </button>
+                            <div class="options-user-submenu">
+                                <ul>
+                                    <li class="submenu-item greeting-item">
+                                        <!-- Mensagem de saudação -->
+                                        <span>Olá, <?= htmlspecialchars($user_name) ?></span>
+                                    </li>
+                                    <li class="submenu-item logout-item">
+                                        <!-- Contêiner para ícone de logout e link -->
+                                        <div class="logout-container">
+                                            <img src="resources/svg/logout-user.svg" alt="Ícone de Logout" width="24"
+                                                height="24" class="submenu-icon">
+                                            <a class="user-item" href="logout.php">Logout</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </li>
                 </ul>
