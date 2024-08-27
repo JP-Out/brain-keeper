@@ -3,19 +3,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const notas = document.querySelectorAll('.nota');
     let isSelecting = false;
     let startX, startY;
+    let animationFrameId;
 
-    // Cria o elemento para a área de seleção
     const selectionArea = document.createElement('div');
     selectionArea.classList.add('selection-area');
-    document.body.appendChild(selectionArea); // Anexa a seleção ao corpo do documento
+    document.body.appendChild(selectionArea);
 
-    // Função para iniciar a seleção
     function startSelection(e) {
         if (e.target.matches('input, textarea, select, .search')) {
             return;
         }
 
-        // Desmarcar todas as notas
         notas.forEach(nota => nota.classList.remove('selected'));
 
         isSelecting = true;
@@ -27,11 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
         selectionArea.style.height = '0px';
         selectionArea.style.display = 'block';
 
-        // Previne a seleção de texto ao iniciar a seleção
         e.preventDefault();
     }
 
-    // Função para atualizar a área de seleção
     function updateSelection(e) {
         if (!isSelecting) return;
 
@@ -48,7 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
         selectionArea.style.left = left + 'px';
         selectionArea.style.top = top + 'px';
 
-        // Verifica se alguma nota está dentro da área de seleção
         notas.forEach(nota => {
             const notaRect = nota.getBoundingClientRect();
             const selectionRect = selectionArea.getBoundingClientRect();
@@ -66,19 +61,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Função para terminar a seleção
+    function handleMouseMove(e) {
+        if (animationFrameId) {
+            cancelAnimationFrame(animationFrameId);
+        }
+        animationFrameId = requestAnimationFrame(() => updateSelection(e));
+    }
+
     function endSelection() {
         isSelecting = false;
         selectionArea.style.display = 'none';
+        if (animationFrameId) {
+            cancelAnimationFrame(animationFrameId);
+        }
     }
 
-    // Eventos para o mouse em toda a janela
     document.addEventListener('mousedown', startSelection);
-    document.addEventListener('mousemove', updateSelection);
+    document.addEventListener('mousemove', handleMouseMove);
     document.addEventListener('mouseup', endSelection);
     document.addEventListener('mouseleave', endSelection);
 
-    // Previne a seleção de texto ao clicar e arrastar
     document.addEventListener('mousedown', (event) => {
         if (!event.target.matches('input, textarea, select, .search')) {
             event.preventDefault();
