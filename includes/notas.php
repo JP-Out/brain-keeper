@@ -9,11 +9,11 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
 
-    <script src="includes/js/notas.js?v=<?php echo filemtime('includes/js/notas.js'); ?>"></script>
-    <script src="includes/js/drag_area.js?v=<?php echo filemtime('includes/js/drag_area.js'); ?>"></script>
+    <script src="includes/js/notas/notas.js?v=<?php echo filemtime('includes/js/notas/notas.js'); ?>"></script>
+    <script src="includes/js/notas/drag_area.js?v=<?php echo filemtime('includes/js/notas/drag_area.js'); ?>"></script>
     <script src="includes/js/submenu_handler.js?v=<?php echo filemtime('includes/js/submenu_handler.js'); ?>"></script>
-    <script src="includes/js/search.js?v=<?php echo filemtime('includes/js/search.js'); ?>"></script>
-    <script src="includes/js/sort_notes.js?v=<?php echo filemtime('includes/js/sort_notes.js'); ?>" defer></script>
+    <script src="includes/js/notas/search.js?v=<?php echo filemtime('includes/js/notas/search.js'); ?>"></script>
+    <script src="includes/js/notas/sort_notes.js?v=<?php echo filemtime('includes/js/notas/sort_notes.js'); ?>" defer></script>
 
     <main>
         <!-- Barra de pesquisa -->

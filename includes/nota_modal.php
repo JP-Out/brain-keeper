@@ -12,7 +12,7 @@
         href="includes/css/modal-style.css?v=<?php echo filemtime('includes/css/modal-style.css'); ?>">
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="includes/js/nota_modal.js?v=<?php echo filemtime('includes/js/nota_modal.js'); ?>"></script>
+    <script src="includes/js/notas/nota_modal.js?v=<?php echo filemtime('includes/js/notas/nota_modal.js'); ?>"></script>
 
 </head>
 
