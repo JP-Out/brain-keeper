@@ -150,6 +150,23 @@ span {
     border-radius: 7px;
 }
 
+/* Botão desativado */
+.form-button-disabled {
+    background-color: #b0b0b0; /* Cor do botão desativado */
+    cursor: not-allowed;
+}
+
+/* Botão ativado */
+.form-button-active {
+    background-color: #4CAF50; /* Cor do botão ativado */
+    cursor: pointer;
+}
+
+.form-button-active:hover {
+    background-color: #45a049; /* Cor do botão ao passar o mouse */
+}
+
+
 /* Seções de login e cadastro */
 .login-section, .cadastro-section {
     flex: 1;

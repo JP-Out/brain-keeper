@@ -8,8 +8,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // Função para verificar se todos os campos estão preenchidos
     function checkFields(inputs, button) {
         const allFilled = Array.from(inputs).every(input => input.value.trim() !== '');
-        button.disabled = !allFilled; // Habilita ou desabilita o botão
-        button.style.backgroundColor = allFilled ? '#4CAF50' : '#b0b0b0'; // Cor do botão
+        // Adiciona ou remove classes dependendo do estado dos campos
+        if (allFilled) {
+            button.classList.remove('form-button-disabled');
+            button.classList.add('form-button-active');
+            button.disabled = false; // Habilita o botão
+        } else {
+            button.classList.remove('form-button-active');
+            button.classList.add('form-button-disabled');
+            button.disabled = true; // Desabilita o botão
+        }
     }
 
     // Adiciona evento para cada campo de entrada
