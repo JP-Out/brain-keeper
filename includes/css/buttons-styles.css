@@ -127,6 +127,9 @@ header nav ul {
     display: block;
 }
 
+.more-options:hover .options-note-submenu {
+    display: block;
+}
 
 /* Estilo para o submenu das notas */
 .options-note-submenu {
@@ -216,6 +219,8 @@ header nav ul {
     background: transparent; /* Evita interferências de estilo no botão */
     position: relative;
 }
+
+
 
 .rotate-icon90 {
     transition: transform 0.18s ease; /* Efeito de rotação */

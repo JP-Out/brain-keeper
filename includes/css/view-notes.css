@@ -24,7 +24,6 @@
     position: absolute; /* Posiciona cada nota em seu ponto de origem */
     top: 0;
     left: 0;
-    transform: translate(0, 0); /* Ajusta a posição com base em coordenadas */
 }
 
 .nota h3 {
