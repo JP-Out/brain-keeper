@@ -2,47 +2,64 @@ document.addEventListener('DOMContentLoaded', function () {
     const modal = document.getElementById('newNoteModal');
     const textarea = document.getElementById('noteDescription');
     const titleInput = document.getElementById('noteTitle');
+    const notasContainer = document.querySelector('.notas-container');
 
-    // Função para ajustar a altura do textarea com base no conteúdo
     function autoResizeTextarea() {
-        textarea.style.height = 'auto'; // Reseta a altura
-        textarea.style.height = Math.min(textarea.scrollHeight, 600) + 'px'; // Ajusta para o tamanho do conteúdo, com altura máxima
+        textarea.style.height = 'auto';
+        textarea.style.height = Math.min(textarea.scrollHeight, 600) + 'px';
         textarea.style.overflowY = 'auto';
     }
 
-    document.querySelectorAll('.nota').forEach(nota => {
-        nota.addEventListener('click', function () {
-            const noteId = this.getAttribute('data-id');
+    function loadNoteData(noteId) {
+        fetch('get_note.php?id=' + noteId)
+            .then(response => response.json())
+            .then(data => {
+                titleInput.value = data.titulo;
+                textarea.value = data.conteudo;
+                autoResizeTextarea();
+                modal.setAttribute('data-note-id', noteId);
+            })
+            .catch(error => console.error('Erro ao buscar a nota:', error));
+    }
 
-            fetch('get_note.php?id=' + noteId)
-                .then(response => response.json())
-                .then(data => {
-                    titleInput.value = data.titulo;
-                    textarea.value = data.conteudo;
-                    autoResizeTextarea(); // Ajusta o tamanho do textarea após carregar o conteúdo
-
-                    // Atribui o ID da nota ao modal para ser usado ao salvar
-                    modal.setAttribute('data-note-id', noteId);
-                })
-                .catch(error => console.error('Erro ao buscar a nota:', error));
-        });
-    });
-
-    // Reseta o modal ao abrir (usado para criar uma nova nota)
-    $(modal).on('show.bs.modal', function () {
+    function resetModal() {
         titleInput.value = '';
         textarea.value = '';
-        textarea.style.height = 'auto'; // Reseta a altura do textarea
-        modal.removeAttribute('data-note-id');  // Remove o ID para criar uma nova nota
-    });
+        textarea.style.height = 'auto';
+        modal.removeAttribute('data-note-id');
+    }
 
-    // Ajusta a altura do textarea ao exibir o modal
-    $(modal).on('shown.bs.modal', function () {
-        autoResizeTextarea();
-    });
+    function updateNotasContainer() {
+        fetch('mostrar_notas.php')
+            .then(response => response.text())
+            .then(data => {
+                // Seleciona o conteúdo dentro da nova `notas-container`
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(data, 'text/html');
+                const newNotes = doc.querySelector('.notas-container').innerHTML;
+    
+                // Substitui o conteúdo da `notas-container` existente
+                notasContainer.innerHTML = newNotes;
+                attachNoteClickEvents();  // Re-anexa os eventos de clique nas novas notas
+                applyMasonry();  // Reaplica o Masonry após a atualização
+            })
+            .catch(error => console.error('Erro ao atualizar as notas:', error));
+    }
+    
 
-    // Salvamento ao fechar o modal
-    $(modal).on('hide.bs.modal', function () {
+    function applyMasonry() {
+        var msnry = new Masonry(notasContainer, {
+            itemSelector: '.nota',
+            columnWidth: '.nota',
+            percentPosition: true,
+            gutter: 15,
+            transitionDuration: '0.4s' // Pode ajustar ou desativar a animação
+        });
+        msnry.layout();  // Recalcula o layout do Masonry
+    }
+
+
+    function saveNote() {
         const title = titleInput.value.trim();
         const description = textarea.value.trim();
         const noteId = modal.getAttribute('data-note-id');
@@ -54,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     'Content-Type': 'application/x-www-form-urlencoded',
                 },
                 body: new URLSearchParams({
-                    'id': noteId || '',  // Envia o ID se existir, ou uma string vazia para criar uma nova nota
+                    'id': noteId || '',
                     'titulo': title,
                     'conteudo': description
                 })
@@ -62,33 +79,56 @@ document.addEventListener('DOMContentLoaded', function () {
                 .then(response => response.text())
                 .then(data => {
                     console.log('Success:', data);
-                    titleInput.value = '';
-                    textarea.value = '';
-                    textarea.style.minHeight = '80px'; // Restaura a altura mínima para o textarea
-                    location.reload();
+                    resetModal();
+                    updateNotasContainer();  // Atualiza o container das notas
                 })
                 .catch(error => console.error('Error:', error));
         }
+    }
+
+    function adjustHeaderPadding() {
+        const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+        $('header').css('padding-right', scrollbarWidth + 'px');
+    }
+
+    function resetHeaderPadding() {
+        $('header').css('padding-right', '');
+    }
+
+    function attachNoteClickEvents() {
+        document.querySelectorAll('.nota').forEach(nota => {
+            nota.addEventListener('click', function () {
+                const noteId = this.getAttribute('data-id');
+                loadNoteData(noteId);
+            });
+        });
+    }
+
+    // Inicializa eventos ao carregar a página
+    attachNoteClickEvents();
+    applyMasonry();
+
+    $(modal).on('show.bs.modal', function () {
+        resetModal();
     });
 
-    // Adiciona o evento de input para redimensionar o textarea enquanto digita
+    $(modal).on('shown.bs.modal', function () {
+        autoResizeTextarea();
+    });
+
+    $(modal).on('hide.bs.modal', function () {
+        saveNote();
+    });
+
     textarea.addEventListener('input', autoResizeTextarea);
 
-    // Adiciona o evento para mover de titulo à descrição, ao pressionar Enter
     titleInput.addEventListener('keydown', function (event) {
         if (event.key === 'Enter') {
-            event.preventDefault(); // Evita o comportamento padrão do Enter
-            textarea.focus(); // Move o foco para o campo de descrição
+            event.preventDefault();
+            textarea.focus();
         }
     });
 
-    // Para não movimentar o header
-    $(document).on('show.bs.modal', function () {
-        var scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-        $('header').css('padding-right', scrollbarWidth + 'px');
-    });
-    
-    $(document).on('hidden.bs.modal', function () {
-        $('header').css('padding-right', '');
-    });
+    $(document).on('show.bs.modal', adjustHeaderPadding);
+    $(document).on('hidden.bs.modal', resetHeaderPadding);
 });

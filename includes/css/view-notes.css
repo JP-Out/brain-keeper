@@ -1,12 +1,10 @@
 /* Estilos para as notas */
 .notas-container {
-    display: flex;
-    grid-auto-rows: min-content; /* Define as linhas com base na altura do conteúdo */
+    grid-auto-rows: min-content;
     flex-wrap: wrap;
     flex-flow: row wrap;
     gap: 20px;
     padding: 20px;
-    align-items: baseline;
     padding-left: 7%;
     position: relative;
 }
@@ -23,7 +21,10 @@
     word-break: break-word;
     margin-bottom: 15px;
     align-self: flex-start; /* Permite que cada nota tenha altura automática */
-    position: relative; /* Para posicionar o botão dentro da nota */
+    position: absolute; /* Posiciona cada nota em seu ponto de origem */
+    top: 0;
+    left: 0;
+    transform: translate(0, 0); /* Ajusta a posição com base em coordenadas */
 }
 
 .nota h3 {
